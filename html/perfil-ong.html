@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+/* ============================================================
+   ESTILO DA PÁGINA DE PERFIL DA ONG (DETALHES)
+   ============================================================ */
+
+.ong-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Header com Capa e Info */
+.ong-header {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(123, 67, 161, 0.05);
+    margin-bottom: 30px;
+}
+
+.ong-cover {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-color: #7B43A1;
+}
+
+.ong-profile-bar {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 40px 30px;
+    position: relative;
+}
+
+.ong-logo-wrapper {
+    width: 160px;
+    height: 160px;
+    background: white;
+    border-radius: 25px;
+    padding: 10px;
+    margin-top: -80px; /* Faz a logo subir sobre a capa */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 5;
+}
+
+.ong-logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.ong-main-info {
+    margin-left: 25px;
+    flex: 1;
+}
+
+.title-verified {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-verified h1 {
+    font-size: 28px;
+    color: #4B2C71;
+    margin: 0;
+}
+
+.title-verified i {
+    color: #3498db;
+    font-size: 20px;
+}
+
+.ong-main-info p {
+    color: #888;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+/* Botões de Ação na ONG */
+.ong-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-donate {
+    background: #FF4D4D;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-donate:hover {
+    background: #e63939;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+}
+
+.btn-chat-ong {
+    background: #F3F0F7;
+    color: #7B43A1;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-chat-ong:hover { background: #E6DFF0; }
+
+/* Estrutura de Duas Colunas (Sobre e Pets) */
+/* Layout Principal da ONG */
+.ong-content-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar fixa e conteúdo flexível */
+    gap: 30px;
+    margin-top: 30px;
+    align-items: start;
+}
+
+/* Sidebar (Esquerda) */
+.ong-sidebar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.info-card h3 {
+    color: #4B2C71;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Seção de Pets (Direita) */
+.ong-pets-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    color: #4B2C71;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* Grade de Animais - RESOLVENDO A BAGUNÇA */
+.my-pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cards lado a lado */
+    gap: 20px;
+}
+
+/* Card do Pet Estilizado */
+.pet-manage-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    transition: 0.3s;
+}
+
+.pet-thumb {
+    position: relative;
+    height: 200px;
+}
+
+.pet-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #27ae60;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Detalhes do Pet */
+.pet-details {
+    padding: 20px;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pet-age-badge {
+    background: #F3F0F7;
+    color: #7B43A1;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.btn-contact-fav {
+    width: 100%;
+    background: #7B43A1;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.help-list {
+    list-style: none;
+    padding: 0;
+}
+
+.help-list li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.help-list i {
+    color: #7B43A1;
+    width: 18px;
+}
+
+.ong-social {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    justify-content: center;
+}
+
+.ong-social a {
+    color: #7B43A1;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.ong-social a:hover { transform: translateY(-3px); }
+
+/* Seção de Pets da ONG */
+.section-title {
+    color: #4B2C71;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+/* Responsividade para o Perfil da ONG */
+@media (max-width: 900px) {
+    .ong-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ong-profile-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .ong-logo-wrapper {
+        margin-left: 0;
+    }
+
+    .ong-main-info {
+        margin: 20px 0;
+        text-align: center;
+    }
+    
+    .title-verified { justify-content: center; }
+
+    .ong-actions { width: 100%; justify-content: center; }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                  <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                    <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+       <main class="content">
+    <div class="ong-container">
+        <section class="ong-header">
+            <div class="ong-cover" style="background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80');"></div>
+            
+            <div class="ong-profile-bar">
+                <div class="ong-logo-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_G8m7OqgK-kE1N7XoG35l-X6-nL-mY7_Y6g&s" alt="Logo ONG">
+                </div>
+                
+                <div class="ong-main-info">
+                    <div class="title-verified">
+                        <h1>ONG Patinhas Felizes</h1>
+                        <i class="fas fa-check-circle" title="ONG Verificada"></i>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Hortolândia, SP • <strong>45 pets</strong> sob cuidados</p>
+                </div>
+
+                <div class="ong-actions">
+                    <button class="btn-donate"><i class="fas fa-heart"></i> Apoiar ONG</button>
+                    <button class="btn-chat-ong">Mensagem</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="ong-content-grid">
+            
+            <aside class="ong-sidebar-info">
+                <div class="info-card">
+                    <h3>Sobre nós</h3>
+                    <p>Atuamos desde 2015 no resgate e reabilitação de animais abandonados. Nosso foco é dar uma segunda chance para cães e gatos de rua.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Formas de Ajuda</h3>
+                    <ul class="help-list">
+                        <li><i class="fas fa-hand-holding-heart"></i> Doação de ração</li>
+                        <li><i class="fas fa-tshirt"></i> Cobertores e camas</li>
+                        <li><i class="fas fa-university"></i> PIX: 00.000.000/0001-00</li>
+                    </ul>
+                </div>
+
+                <div class="ong-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fas fa-link"></i></a>
+                </div>
+            </aside>
+
+            <section class="ong-pets-section">
+                <h2 class="section-title">Nossos animais para adoção</h2>
+                
+                <div class="my-pets-grid">
+                    <div class="pet-manage-card">
+                        <div class="pet-thumb">
+                            <img src="https://placedog.net/400/300?id=25" alt="Pet">
+                            <span class="status-badge">Disponível</span>
+                        </div>
+                        <div class="pet-details">
+                            <div class="card-header-flex">
+                                <h3>Bolinha</h3>
+                                <span class="pet-age-badge">1 ano</span>
+                            </div>
+                            <p><i class="fas fa-paw"></i> Vira-lata (SRD)</p>
+                            <button class="btn-contact-fav" onclick="window.location.href='detalhes-pet.html'">Quero Adotar</button>
+                        </div>
+                    </div>
+                    <div class="pet-manage-card">
+                        <div class="pet-thumb">
+                            <img src="https://placedog.net/400/300?id=32" alt="Pet">
+                            <span class="status-badge">Disponível</span>
+                        </div>
+                        <div class="pet-details">
+                            <div class="card-header-flex">
+                                <h3>Mel</h3>
+                                <span class="pet-age-badge">3 anos</span>
+                            </div>
+                            <p><i class="fas fa-paw"></i> Labrador Mix</p>
+                            <button class="btn-contact-fav">Quero Adotar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="feed.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                    <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+        <main class="content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar por cidade ou raça">
+                </div>
+                <button class="btn-search">Pesquisar</button>
+            </header>
+
+            <button class="btn-filter" onclick="toggleFilter()">Filtrar</button>
+            <div id="filterModal" class="filter-modal">
+                <div class="filter-content">
+                    <h3>Filtros Avançados</h3>
+
+                    <div class="filter-group">
+                        <div class="select-box">
+                            <i class="fas fa-paw"></i>
+                            <select>
+                                <option>Selecione a raça</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div class="filter-section white-bg">
+                        <div class="radio-group">
+                            <label class="custom-radio"><input type="radio" name="idade"><span></span> Até 1 ano</label>
+                            <label class="custom-radio"><input type="radio" name="idade"><span></span> 1 a 5
+                                anos</label>
+                            <label class="custom-radio"><input type="radio" name="idade"><span></span> Mais anos</label>
+                        </div>
+
+                        <hr class="divider">
+
+                        <div class="checkbox-grid">
+                            <label class="custom-check"><input type="checkbox"><span></span> Pequeno</label>
+                            <label class="custom-check"><input type="checkbox"><span></span> Sexo</label>
+                            <label class="custom-check"><input type="checkbox"><span></span> Médio</label>
+                            <label class="custom-check"><input type="checkbox"><span></span> Tamanho</label>
+                            <label class="custom-check"><input type="checkbox"><span></span> Grande</label>
+                            <label class="custom-check"><input type="checkbox"><span></span> Raça</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn-apply">Aplicar Filtros</button>
+                        <button class="btn-clear" onclick="toggleFilter()">Limpar Filtros</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="pet-grid">
+
+                <div class="pet-card-v2">
+                    <div class="card-media">
+                        <img src="https://placedog.net/400/500?id=10" alt="Rex">
+                        <button class="fav-btn active"><i class="fas fa-heart"></i></button>
+                        <span class="badge-status">Novo</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-header-flex">
+                            <h3>Paquita</h3>
+                            <span class="gender-icon male"><i class="fas fa-mars"></i></span>
+                        </div>
+                        <p class="pet-type">Golden Retriever</p>
+
+                        <div class="info-row">
+                            <span><i class="fas fa-birthday-cake"></i> 2 Anos</span>
+                            <span><i class="fas fa-map-marker-alt"></i> SP</span>
+                        </div>
+
+                       <a href="detalhes-pet.html"> <button class="btn-main-action">Ver Detalhes</button> </a>
+                    </div>
+                </div>
+
+                <div class="pet-card-v2">
+                    <div class="card-media">
+                        <img src="https://placedog.net/400/500?id=12" alt="Luna">
+                        <button class="fav-btn"><i class="far fa-heart"></i></button>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-header-flex">
+                            <h3>Jhow</h3>
+                            <span class="gender-icon female"><i class="fas fa-venus"></i></span>
+                        </div>
+                        <p class="pet-type">Siamês</p>
+
+                        <div class="info-row">
+                            <span><i class="fas fa-birthday-cake"></i> 5 meses</span>
+                            <span><i class="fas fa-map-marker-alt"></i> RJ</span>
+                        </div>
+
+                        <button class="btn-main-action">Ver Detalhes</button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

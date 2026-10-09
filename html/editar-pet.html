@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+  /* Overlay na imagem para indicar edição */
+/* ============================================================
+   LAYOUT DO FORMULÁRIO (CADASTRO E EDIÇÃO)
+   ============================================================ */
+
+.form-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease;
+}
+
+.post-form-card {
+    background: white;
+    border-radius: 24px;
+    display: flex; /* Cria as duas colunas */
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(123, 67, 161, 0.1);
+    min-height: 550px;
+}
+
+/* Coluna da Esquerda: Upload/Foto */
+.side-upload {
+    flex: 1;
+    background: #F8F6FC;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #eee;
+}
+
+.upload-area {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    position: relative;
+    cursor: pointer;
+}
+
+.preview-container, .preview-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* Efeito de trocar foto na Edição */
+.edit-photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(123, 67, 161, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 20px;
+}
+
+.upload-area:hover .edit-photo-overlay {
+    opacity: 1;
+}
+
+/* Coluna da Direita: Campos de Texto */
+.side-info {
+    flex: 1.2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7B43A1;
+    text-transform: uppercase;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+.three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Estilo dos Inputs, Selects e Textarea */
+input, select, textarea {
+    background: #F3F0F7;
+    border: 1px solid transparent;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: white;
+    border-color: #7B43A1;
+    box-shadow: 0 0 0 4px rgba(123, 67, 161, 0.1);
+}
+
+/* Seletor de Status Diferenciado */
+.status-select {
+    border: 1px solid #7B43A1;
+    color: #7B43A1;
+    font-weight: 700;
+}
+
+/* Botões do Rodapé */
+.form-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-cancel {
+    background: none;
+    border: none;
+    color: #999;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-publish {
+    background: #7B43A1;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-publish:hover {
+    background: #5a2d7a;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                   <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                   <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                    <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+      <main class="content">
+            <div class="feed-header-wrapper">
+                <div class="back-nav">
+                    <a href="meus-pets.html" style="text-decoration: none; color: #7B43A1; font-weight: 600; font-size: 14px;">
+                        <i class="fas fa-arrow-left"></i> Voltar para Meus Pets
+                    </a>
+                </div>
+                <h2 class="page-title" style="margin-top: 10px;">Editar Informações: Rex</h2>
+                <p class="page-subtitle">Atualize os dados ou o status de adoção do seu pet.</p>
+            </div>
+
+            <section class="form-container">
+                <div class="post-form-card">
+                    
+                    <div class="side-upload">
+                        <div class="upload-area" id="uploadArea">
+                            <div id="previewContainer" class="preview-container">
+                                <img src="https://placedog.net/600/600?id=10" alt="Foto atual">
+                            </div>
+                            <div class="edit-photo-overlay">
+                                <i class="fas fa-camera"></i>
+                                <p>Alterar Foto</p>
+                            </div>
+                            <input type="file" id="fileInput" hidden accept="image/*">
+                        </div>
+                        <p class="upload-tip">Clique na imagem para trocar a foto principal.</p>
+                    </div>
+
+                    <div class="side-info">
+                        <div class="input-group">
+                            <label>Status de Adoção</label>
+                            <select class="status-select">
+                                <option value="disponivel" selected>Disponível para Adoção</option>
+                                <option value="reservado">Reservado / Em análise</option>
+                                <option value="adotado">Já foi Adotado!</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Nome do Pet</label>
+                            <input type="text" value="Rex">
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Espécie</label>
+                                <select>
+                                    <option selected>Cachorro</option>
+                                    <option>Gato</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Raça</label>
+                                <input type="text" value="Golden Retriever">
+                            </div>
+                        </div>
+
+                        <div class="input-row three-cols">
+                            <div class="input-group">
+                                <label>Idade</label>
+                                <input type="text" value="2 anos">
+                            </div>
+                            <div class="input-group">
+                                <label>Porte</label>
+                                <select>
+                                    <option>Pequeno</option>
+                                    <option>Médio</option>
+                                    <option selected>Grande</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Descrição e Temperamento</label>
+                            <textarea rows="4">O Rex é muito dócil, adora crianças e já está vacinado. Procura um lar com quintal grande.</textarea>
+                        </div>
+
+                        <div class="form-footer">
+                            <button class="btn-cancel" onclick="window.location.href='meus-pets.html'">Cancelar</button>
+                            <button class="btn-publish">Salvar Alterações</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

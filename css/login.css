@@ -1,0 +1,264 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.secao-login {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.lado-visual {
+    flex: 1;
+    background-color: #E6CFF1;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.cabecalho {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 3;
+}
+
+
+.nuvens {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; 
+    pointer-events: none;
+}
+
+.nuvem-1 {
+    top: 15%;
+    right: 70%;
+    width: 160px;
+    animation-duration: 14s;
+}
+
+.nuvem-2 {
+    top: 28%;
+    left: 22%;
+    width: 110px;
+    animation-duration: 12s;
+}
+
+.nuvem-3 {
+    top: 0%;
+    left: 22%;
+    width: 180px;
+    animation-duration: 18s;
+}
+
+.nuvem-4 {
+    top: 18%;
+    left: 52%;
+    width: 110px;
+    animation-duration: 10s;
+}
+@keyframes moverLado {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(40px, -8px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+.nuvem {
+    position: absolute;
+    opacity: 0.9;
+    animation: moverLado 10s ease-in-out infinite;
+}
+
+
+
+
+
+
+
+.conteudo-imagem {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 2;
+    text-align: center;
+}
+
+.dog {
+    width: 360px;
+    max-width: 100%;
+}
+
+.sombra-elipse {
+    width: 260px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    margin: -115px auto 0;
+}
+
+
+.fundo-montanha {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    z-index: 1;
+}
+
+.fundo-montanha svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+.lado-formulario {
+    flex: 1;
+    background-color: #F3E5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container-formulario {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.container-formulario h2 {
+    color: #5E2B7A;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+
+.grupo-entrada {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.grupo-entrada label {
+    display: block;
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.grupo-entrada input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.grupo-entrada input:focus {
+    border-color: #7D40A9;
+}
+
+
+.link-pequeno {
+    display: block;
+    text-align: left;
+    font-size: 0.85rem;
+    color: #7D40A9;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.link-esqueceu {
+    display: inline-block;
+    margin-top: 30px;
+    color: #333;
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+
+.botao {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.botao:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+@media (max-width: 700px) {
+
+    /* Remove o lado visual do layout */
+    .lado-visual {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        overflow: visible;
+        background: none;
+    }
+
+    /* Esconde tudo menos a logo */
+    .lado-visual > *:not(.cabecalho) {
+        display: none;
+    }
+
+    /* Logo fixa no topo */
+    .cabecalho {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+    }
+
+    /* Formulário ocupa 100% */
+    .secao-login {
+        display: block;
+    }
+
+    .lado-formulario {
+        width: 100%;
+        min-height: 100vh;
+        padding-top: 120px; /* espaço para logo */
+    }
+
+    .container-formulario {
+        max-width: 90%;
+    }
+}

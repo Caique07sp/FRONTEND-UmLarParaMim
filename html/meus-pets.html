@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+      /* Cabeçalho com botão ao lado */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-add-pet {
+    background: #7B43A1;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-add-pet:hover {
+    background: #5a2d7a;
+    transform: scale(1.05);
+}
+
+/* Grid de Pets */
+.my-pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Card Individual */
+.pet-manage-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.pet-manage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(123, 67, 161, 0.15);
+}
+
+.pet-thumb {
+    position: relative;
+    height: 180px;
+}
+
+.pet-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #27ae60;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-badge.pinned {
+    background: #7B43A1; /* Cor para adotado ou destaque */
+}
+
+.pet-details {
+    padding: 20px;
+}
+
+.pet-details h3 {
+    color: #4B2C71;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.pet-details p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* Botões de Ação */
+.manage-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit {
+    flex: 1;
+    background: #F3F0F7;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    color: #7B43A1;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-edit:hover { background: #7B43A1; color: white; }
+
+.btn-delete {
+    background: #fff0f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #ff4d4d;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-delete:hover { background: #ff4d4d; color: white; }
+
+/* Card Vazio para adicionar */
+.add-pet-empty {
+    border: 2px dashed #D8C4E9;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #7B43A1;
+    transition: 0.3s;
+    min-height: 280px;
+}
+
+.add-pet-empty i { font-size: 40px; margin-bottom: 10px; }
+.add-pet-empty:hover { background: #F3E8FF; border-color: #7B43A1; }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                   <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                   <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+       <main class="content">
+    <div class="feed-header-wrapper">
+        <div class="header-flex">
+            <div>
+                <h2 class="page-title">Meus Pets</h2>
+                <p class="page-subtitle">Gerencie os pets que você cadastrou para adoção</p>
+            </div>
+            <a href="cadastrar-pet.html" class="btn-add-pet">
+                <i class="fas fa-plus"></i> Cadastrar Novo
+            </a>
+        </div>
+    </div>
+
+    <section class="my-pets-grid">
+        <div class="pet-manage-card">
+            <div class="pet-thumb">
+                <img src="https://placedog.net/400/300?id=5" alt="Rex">
+                <span class="status-badge">Disponível</span>
+            </div>
+            <div class="pet-details">
+                <h3>Rex</h3>
+                <p><i class="fas fa-paw"></i> Golden Retriever</p>
+                <div class="manage-actions">
+                  <a href="editar-pet.html">  <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i> Editar</button></a>
+                    <button class="btn-delete" title="Excluir"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pet-manage-card">
+            <div class="pet-thumb">
+                <img src="https://placedog.net/400/300?id=8" alt="Luna">
+                <span class="status-badge pinned">Adotado</span>
+            </div>
+            <div class="pet-details">
+                <h3>Luna</h3>
+                <p><i class="fas fa-paw"></i> SRD (Vira-lata)</p>
+                <div class="manage-actions">
+                    <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i> Editar</button>
+                    <button class="btn-delete" title="Excluir"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <a href="cadastrar-pet.html" class="add-pet-empty">
+            <i class="fas fa-plus-circle"></i>
+            <span>Adicionar outro pet</span>
+        </a>
+    </section>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

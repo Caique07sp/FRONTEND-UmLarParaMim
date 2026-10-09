@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar senha - Um lugar para mim</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="secao-login">
+        <div class="lado-visual">
+            <header class="cabecalho">
+                <div class="logo">
+                    <a href="/index.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px" alt="Logo"></a>
+                </div>
+            </header>
+
+            <div class="nuvens">
+                <img src="/assets/nuvem.png" class="nuvem nuvem-1" alt="Nuvem">
+                <img src="/assets/nuvem.png" class="nuvem nuvem-2" alt="Nuvem">
+                <img src="/assets/nuvem.png" class="nuvem nuvem-3" alt="Nuvem">
+                <img src="/assets/nuvem.png" class="nuvem nuvem-4" alt="Nuvem">
+            </div>
+
+            <div class="conteudo-imagem">
+                <img src="/assets/dog_cat.png" alt="Cachorro e Gato" class="dog">
+                <div class="sombra-elipse"></div>
+            </div>
+
+            <div class="fundo-montanha">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#D2ABE4" d="
+                        M0,220
+                        C240,180 480,185 720,170
+                        C960,180 1200,210 1440,230
+                        L1440,320 L0,320 Z
+                    " />
+                </svg>
+            </div>
+        </div>
+
+        <div class="lado-formulario">
+            <div class="container-formulario">
+                <h2>Esqueceu sua senha?</h2>
+
+                <form action="#">
+                    <div class="grupo-entrada">
+                        <label for="campo-email">Email</label>
+                        <input type="email" id="campo-email" name="email" required>
+                    </div>
+
+                    <button type="submit" style="background-color: #7D40A9;"
+                        class="botao botao-principal">
+                        Enviar link de recuperação
+                    </button>
+
+                    <a href="/html/login.html" class="link-pequeno">Voltar para o login</a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

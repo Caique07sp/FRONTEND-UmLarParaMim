@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Container Centralizado para o Feed */
+.feed-container {
+    max-width: 600px; /* Largura padrão Instagram */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.post-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(123, 67, 161, 0.1);
+    animation: fadeInSlide 0.5s ease-out;
+}
+
+.post-header {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #7B43A1;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info strong { font-size: 14px; color: #333; }
+.user-info span { font-size: 11px; color: #888; }
+
+.post-image img {
+    width: 100%;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.post-actions {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #7B43A1;
+}
+
+.left-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.post-actions i {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.post-actions i:hover {
+    transform: scale(1.2);
+    color: #9254c8;
+}
+
+.post-content {
+    padding: 0 15px 15px 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.view-comments {
+    display: block;
+    margin-top: 8px;
+    color: #888;
+    font-size: 12px;
+    cursor: pointer;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                   <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                   <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+        <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+            
+        </aside>
+
+       <main class="content">
+    <header class="top-bar">
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Pesquisar posts...">
+        </div>
+    </header>
+
+    <section class="feed-container">
+        <article class="post-card">
+            <div class="post-header">
+                <img src="https://i.pravatar.cc/150?u=1" alt="Usuário" class="user-thumb">
+                <div class="user-info">
+                    <strong>Maria Silva</strong>
+                    <span>há 2 horas</span>
+                </div>
+                <i class="fas fa-ellipsis-h post-options"></i>
+            </div>
+            
+            <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1" alt="Post">
+            </div>
+
+            <div class="post-actions">
+                <div class="left-actions">
+                    <i class="far fa-heart"></i>
+                    <i class="far fa-comment"></i>
+                    <i class="far fa-paper-plane"></i>
+                </div>
+                <i class="far fa-bookmark"></i>
+            </div>
+
+            <div class="post-content">
+                <p><strong>Maria Silva</strong> Olhem que fofura o Rex hoje no parque! 🐾 #doglife #petlovers</p>
+                <span class="view-comments">Ver todos os 12 comentários</span>
+            </div>
+        </article>
+
+        <article class="post-card">
+            <div class="post-header">
+                <img src="https://i.pravatar.cc/150?u=2" alt="Usuário" class="user-thumb">
+                <div class="user-info">
+                    <strong>João Paulo</strong>
+                    <span>há 5 horas</span>
+                </div>
+                <i class="fas fa-ellipsis-h post-options"></i>
+            </div>
+            <div class="post-image">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba" alt="Post">
+            </div>
+            <div class="post-actions">
+                <div class="left-actions">
+                    <i class="far fa-heart"></i>
+                    <i class="far fa-comment"></i>
+                    <i class="far fa-paper-plane"></i>
+                </div>
+                <i class="far fa-bookmark"></i>
+            </div>
+            <div class="post-content">
+                <p><strong>João Paulo</strong> Minha gatinha Paquita finalmente aceitou a caminha nova. 🐱✨</p>
+            </div>
+        </article>
+    </section>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

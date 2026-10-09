@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Container Centralizado para o Feed */
+       /* Título da Página */
+/* Container Geral do Chat */
+.chat-container {
+    display: flex;
+    background: white;
+    height: calc(100vh - 80px); /* Ajusta para não sobrar scroll na tela */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(123, 67, 161, 0.1);
+}
+
+/* Sidebar de Conversas */
+.chat-sidebar {
+    width: 350px;
+    border-right: 1px solid #F0F0F0;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.search-chat {
+    background: #F3F0F7;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.search-chat input {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Itens da Lista */
+.chat-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.chat-item:hover { background: #FBF9FF; }
+.chat-item.active { background: #F3E8FF; border-left: 4px solid #7B43A1; }
+
+.chat-item-info { flex: 1; }
+.chat-item-top { display: flex; justify-content: space-between; align-items: center; }
+.chat-item-top strong { font-size: 14px; color: #333; }
+.chat-item-top span { font-size: 11px; color: #AAA; }
+.chat-item p { font-size: 13px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+
+.unread-badge {
+    background: #7B43A1;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+/* Janela de Mensagens */
+.chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+}
+
+.chat-window-header {
+    padding: 15px 25px;
+    border-bottom: 1px solid #F0F0F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info-active { display: flex; align-items: center; gap: 12px; }
+.user-avatar-small { width: 40px; height: 40px; border-radius: 50%; }
+.status-online { font-size: 11px; color: #27ae60; display: block; }
+
+/* Balões de Mensagem */
+.chat-messages {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background: #FDFBFF;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.msg-bubble {
+    max-width: 60%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 14px;
+    position: relative;
+}
+
+.received {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid #F0F0F0;
+    color: #444;
+    border-bottom-left-radius: 2px;
+}
+
+.sent {
+    align-self: flex-end;
+    background: #7B43A1;
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.msg-time {
+    font-size: 10px;
+    margin-top: 5px;
+    display: block;
+    opacity: 0.7;
+    text-align: right;
+}
+
+/* Input de Mensagem */
+.chat-input-area {
+    padding: 20px;
+    border-top: 1px solid #F0F0F0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    background: #F3F0F7;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    outline: none;
+}
+
+.btn-send {
+    background: #7B43A1;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-send:hover { transform: scale(1.1); background: #5a2d7a; }
+
+.btn-attach {
+    background: none;
+    border: none;
+    color: #7B43A1;
+    font-size: 20px;
+    cursor: pointer;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                    <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+            <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+      <main class="content no-padding"> <div class="chat-container">
+        
+        <aside class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <h3>Mensagens</h3>
+                <div class="search-chat">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar conversas...">
+                </div>
+            </div>
+
+            <div class="chat-list">
+                <div class="chat-item active">
+                    <img src="https://i.pravatar.cc/150?u=ana" class="user-avatar">
+                    <div class="chat-item-info">
+                        <div class="chat-item-top">
+                            <strong>Ana Souza</strong>
+                            <span>14:30</span>
+                        </div>
+                        <p>O Rex ainda está disponível?</p>
+                    </div>
+                </div>
+
+                <div class="chat-item">
+                    <img src="https://i.pravatar.cc/150?u=marcos" class="user-avatar">
+                    <div class="chat-item-info">
+                        <div class="chat-item-top">
+                            <strong>Marcos Lima</strong>
+                            <span>Ontem</span>
+                        </div>
+                        <p>Muito obrigado pelas fotos!</p>
+                    </div>
+                    <span class="unread-badge">2</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="chat-window">
+            <div class="chat-window-header">
+                <div class="user-info-active">
+                    <img src="https://i.pravatar.cc/150?u=ana" class="user-avatar-small">
+                    <div>
+                        <strong>Ana Souza</strong>
+                        <span class="status-online">Online agora</span>
+                    </div>
+                </div>
+                <div class="chat-options">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="msg-bubble received">
+                    <p>Olá! Vi o anúncio do Rex. Ele se dá bem com outros cachorros?</p>
+                    <span class="msg-time">14:28</span>
+                </div>
+
+                <div class="msg-bubble sent">
+                    <p>Oi Ana! Sim, ele é super dócil e adora brincar com outros cães.</p>
+                    <span class="msg-time">14:30</span>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <button class="btn-attach"><i class="fas fa-plus"></i></button>
+                <input type="text" placeholder="Digite sua mensagem...">
+                <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </section>
+
+    </div>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

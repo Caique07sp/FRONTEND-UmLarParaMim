@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+/* Container da Grade de ONGs */
+.ong-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding-top: 20px;
+}
+
+/* Card Individual da ONG */
+.ong-card {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(123, 67, 161, 0.05);
+    transition: 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.ong-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(123, 67, 161, 0.12);
+}
+
+/* Banner superior do card */
+.ong-banner {
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Conteúdo interno */
+.ong-card-content {
+    padding: 0 20px 25px;
+    text-align: center;
+    position: relative;
+}
+
+/* Avatar flutuante no card */
+.ong-avatar {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 20px;
+    padding: 5px;
+    margin: -40px auto 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.ong-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.ong-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.ong-name h3 {
+    color: #4B2C71;
+    font-size: 18px;
+    margin: 0;
+}
+
+.verified {
+    color: #3498db;
+    font-size: 14px;
+}
+
+.ong-location {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.ong-stats {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.ong-stats strong {
+    color: #7B43A1;
+}
+
+/* Botão de Ver ONG */
+.btn-view-ong {
+    display: block;
+    text-decoration: none;
+    background: #F3F0F7;
+    color: #7B43A1;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-view-ong:hover {
+    background: #7B43A1;
+    color: white;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                  <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+       <main class="content">
+    <div class="feed-header-wrapper">
+        <h2 class="page-title">ONGs Parceiras</h2>
+        <p class="page-subtitle">Conheça as instituições que dedicam a vida a salvar animais.</p>
+    </div>
+
+    <section class="ong-grid">
+        
+        <div class="ong-card">
+            <div class="ong-banner" style="background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500');"></div>
+            <div class="ong-card-content">
+                <div class="ong-avatar">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_G8m7OqgK-kE1N7XoG35l-X6-nL-mY7_Y6g&s" alt="Logo ONG">
+                </div>
+                <div class="ong-card-info">
+                    <div class="ong-name">
+                        <h3>Patinhas Felizes</h3>
+                        <i class="fas fa-check-circle verified"></i>
+                    </div>
+                    <p class="ong-location"><i class="fas fa-map-marker-alt"></i> Hortolândia, SP</p>
+                    <p class="ong-stats"><strong>45</strong> pets disponíveis</p>
+                </div>
+                <a href="perfil-ong.html" class="btn-view-ong">Ver ONG</a>
+            </div>
+        </div>
+
+        <div class="ong-card">
+            <div class="ong-banner" style="background-image: url('https://images.unsplash.com/photo-1513245533132-aa7f8e70110f?w=500');"></div>
+            <div class="ong-card-content">
+                <div class="ong-avatar">
+                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=100" alt="Logo ONG">
+                </div>
+                <div class="ong-card-info">
+                    <div class="ong-name">
+                        <h3>Resgate Animal</h3>
+                        <i class="fas fa-check-circle verified"></i>
+                    </div>
+                    <p class="ong-location"><i class="fas fa-map-marker-alt"></i> Campinas, SP</p>
+                    <p class="ong-stats"><strong>12</strong> pets disponíveis</p>
+                </div>
+                <a href="#" class="btn-view-ong">Ver ONG</a>
+            </div>
+        </div>
+
+    </section>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

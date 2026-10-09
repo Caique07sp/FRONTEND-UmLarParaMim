@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+     
+/* ============================================================
+   LAYOUT DO PERFIL E CONFIGURAÇÕES
+   ============================================================ */
+
+/* Container Centralizado */
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Header do Perfil (Capa e Avatar) */
+.profile-header-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(123, 67, 161, 0.08);
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #F0EAF5;
+}
+
+.profile-cover {
+    height: 160px;
+    background: linear-gradient(135deg, #7B43A1 0%, #D8C4E9 100%);
+}
+
+.profile-avatar-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: -70px auto 15px;
+}
+
+.profile-avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid white;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Botão Flutuante de Câmera */
+.btn-change-avatar {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #7B43A1;
+    color: white;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-change-avatar:hover { 
+    transform: scale(1.1); 
+    background: #5a2d7a; 
+}
+
+/* Informações do Header */
+.profile-header-info h2 { 
+    color: #4B2C71; 
+    font-size: 26px; 
+    margin-bottom: 8px;
+}
+
+.profile-header-info p { 
+    background: #F3F0F7;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 20px;
+    color: #7B43A1;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+/* Cards de Campos de Entrada (Dados e Segurança) */
+.settings-card {
+    background: white;
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    border: 1px solid #F0EAF5;
+}
+
+.settings-card h3 {
+    color: #4B2C71;
+    font-size: 18px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-card h3 i { 
+    color: #7B43A1; 
+    font-size: 20px;
+}
+
+/* Grid de Inputs */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7B43A1;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.input-group input {
+    background: #F8F6FC;
+    border: 2px solid transparent;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #4B2C71;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    background: white;
+    border-color: #7B43A1;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(123, 67, 161, 0.1);
+}
+
+.security-tip {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Barra de Ações Final */
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 25px 35px;
+    border-radius: 24px;
+    border: 1px solid #F0EAF5;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.btn-save-profile {
+    background: #7B43A1;
+    color: white;
+    border: none;
+    padding: 16px 50px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(123, 67, 161, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-save-profile:hover {
+    background: #5a2d7a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(123, 67, 161, 0.3);
+}
+
+.btn-delete-account {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.btn-delete-account:hover { 
+    opacity: 1; 
+    text-decoration: underline; 
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .settings-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .profile-actions { 
+        flex-direction: column; 
+        gap: 20px; 
+        text-align: center;
+    }
+    .btn-save-profile {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                    <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                    <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                    <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                    <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="#" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+            <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+    <main class="content">
+    <div class="profile-container">
+        <div class="profile-header-card">
+            <div class="profile-cover"></div>
+            <div class="profile-avatar-wrapper">
+                <img src="https://i.pravatar.cc/150?u=caique" alt="Foto de Perfil" id="userAvatar">
+                <button class="btn-change-avatar" title="Mudar foto">
+                    <i class="fas fa-camera"></i>
+                </button>
+            </div>
+            <div class="profile-header-info">
+                <h2>Bruno Gomes</h2>
+                <p>Membro desde Janeiro de 2024 • 12 Pets Cadastrados</p>
+            </div>
+        </div>
+
+        <section class="profile-settings">
+            <div class="settings-card">
+                <h3><i class="fas fa-user-edit"></i> Dados Pessoais</h3>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Nome Completo</label>
+                        <input type="text" value="Bruno Gomes">
+                    </div>
+                    <div class="input-group">
+                        <label>E-mail</label>
+                        <input type="email" value="bruno.gomes@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="text" value="(19) 99999-9999">
+                    </div>
+                    <div class="input-group">
+                        <label>Cidade / Estado</label>
+                        <input type="text" value="Hortolândia, SP">
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-card">
+                <h3><i class="fas fa-lock"></i> Segurança</h3>
+                <div class="settings-grid">
+                    <div class="input-group">
+                        <label>Nova Senha</label>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                    <div class="input-group">
+                        <label>Confirmar Nova Senha</label>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                </div>
+                <p class="security-tip">Deixe em branco caso não queira alterar a senha atual.</p>
+            </div>
+
+            <div class="profile-actions">
+                <button class="btn-save-profile">Atualizar Perfil</button>
+                <button class="btn-delete-account">Excluir minha conta</button>
+            </div>
+        </section>
+    </div>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

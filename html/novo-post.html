@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Container Centralizado para o Feed */
+       /* Título da Página */
+.feed-header-wrapper {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.page-title {
+    color: #4B2C71;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #888;
+    font-size: 14px;
+}
+
+/* O Card de Postagem */
+.post-form-card {
+    background: white;
+    border-radius: 24px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(123, 67, 161, 0.15);
+    min-height: 550px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Área de Imagem */
+.side-upload {
+    flex: 1.2;
+    background: #F8F6FC;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-placeholder {
+    text-align: center;
+    transition: 0.3s;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: #7B43A1;
+    font-size: 30px;
+    box-shadow: 0 10px 20px rgba(123, 67, 161, 0.1);
+}
+
+.upload-placeholder p {
+    font-weight: 600;
+    color: #4B2C71;
+}
+
+.upload-placeholder span {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Editor de Texto */
+.side-info {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #7B43A1;
+}
+
+.user-meta strong { font-size: 15px; display: block; }
+.user-meta span { font-size: 11px; color: #999; }
+
+.editor-body textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    outline: none;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Ferramentas Extras */
+.extra-tools {
+    border-top: 1px solid #F0F0F0;
+    padding-top: 20px;
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #7B43A1;
+}
+
+.tool-item input {
+    border: none;
+    outline: none;
+    font-size: 13px;
+    width: 100%;
+    color: #666;
+}
+
+/* Footer e Botões */
+.form-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-publish {
+    background: #7B43A1;
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(123, 67, 161, 0.25);
+    transition: 0.3s;
+}
+
+.btn-publish:hover {
+    background: #5a2d7a;
+    transform: translateY(-2px);
+}
+
+.btn-cancel {
+    color: #aaa;
+    background: none;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                    <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                   <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                   <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+           <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+      <main class="content">
+    <div class="feed-header-wrapper">
+        <h2 class="page-title">Criar nova publicação</h2>
+        <p class="page-subtitle">Compartilhe os melhores momentos com a comunidade</p>
+    </div>
+
+    <section class="form-container">
+        <div class="post-form-card">
+            
+            <div class="side-upload">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-placeholder">
+                        <div class="icon-circle">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <p>Arraste suas fotos aqui</p>
+                        <span>ou clique para selecionar do dispositivo</span>
+                    </div>
+                    <input type="file" id="fileInput" hidden accept="image/*">
+                    <div id="previewContainer" class="preview-container"></div>
+                </div>
+            </div>
+
+            <div class="side-info">
+                <div class="user-header">
+                    <img src="https://i.pravatar.cc/150?u=caique" class="user-avatar">
+                    <div class="user-meta">
+                        <strong>Caique Oliveira</strong>
+                        <span>Postando publicamente</span>
+                    </div>
+                </div>
+
+                <div class="editor-body">
+                    <textarea id="caption" placeholder="O que você está pensando? #pet" rows="6"></textarea>
+                    
+                    <div class="extra-tools">
+                        <div class="tool-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" placeholder="Adicionar localização...">
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-tag"></i>
+                            <input type="text" placeholder="Marcar pessoas ou pets...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button class="btn-cancel">Descartar</button>
+                    <button class="btn-publish">Publicar agora</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

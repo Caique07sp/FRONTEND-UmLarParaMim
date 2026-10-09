@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --cor-fundo: #E2C5F3; 
+    --roxo-primario: #7D40A9; 
+    --roxo-secundario: #5E2D7A; 
+    --cor-texto: #333;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    overflow: hidden; 
+}
+
+.secao-principal {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 5%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 2;
+}
+
+.cabecalho {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo img {
+    border-radius: 100px;
+}
+
+.wrapper-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteudo-texto h1 {
+    font-size: 3.5rem;
+    color: #2B2232;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.conteudo-texto span {
+    color: #483458; 
+}
+
+.grupo-botoes {
+    display: flex;
+    gap: 20px;
+}
+
+.botao {
+    text-decoration: none;
+    padding: 15px 45px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: transform 0.2s, opacity 0.2s;
+    color: white;
+}
+
+
+.botao-secundario {
+    background-color: var(--roxo-secundario);
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.conteudo-imagem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-pet {
+    width: 350px;
+    position: relative;
+    top: 300px;
+    z-index: 3;
+}
+
+.sombra-elipse1 {
+    width: 250px;
+    height: 60px;
+    background: #E1C6ED;
+    border-radius: 50%;
+    margin-top: 200px;
+}
+
+
+.fundo-montanha {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40%; 
+    z-index: 1;
+}
+
+
+/* ================= RESPONSIVIDADE ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .wrapper-conteudo {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .conteudo-texto h1 {
+        font-size: 3rem;
+    }
+
+    .grupo-botoes {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .imagem-pet {
+        width: 300px;
+        top: 120px;
+    }
+
+    .sombra-elipse1 {
+        margin-top: 60px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .secao-principal {
+        padding: 40px 5%;
+        height: auto;
+    }
+
+    .cabecalho {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .wrapper-conteudo {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .conteudo-texto h1 {
+        font-size: 2.3rem;
+    }
+
+    .grupo-botoes {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .botao {
+        width: 100%;
+        text-align: center;
+    }
+
+    .conteudo-imagem {
+        margin-top: 20px;
+    }
+
+    .imagem-pet {
+        width: 240px;
+        top: 60px;
+    }
+
+    .sombra-elipse1 {
+        width: 180px;
+        height: 45px;
+        margin-top: 40px;
+    }
+
+    .fundo-montanha {
+        height: 25%;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    .conteudo-texto h1 {
+        font-size: 2rem;
+    }
+
+    .imagem-pet {
+        width: 200px;
+        top: 40px;
+    }
+}

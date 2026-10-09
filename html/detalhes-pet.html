@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Lar Para Mim</title>
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        
+.back-nav {
+    margin-bottom: 20px;
+}
+.back-nav a {
+    text-decoration: none;
+    color: #7B43A1;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.pet-details-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(123, 67, 161, 0.1);
+}
+
+
+.main-image {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.main-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.thumbnails {
+    display: flex;
+    gap: 10px;
+}
+.thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+.thumb.active, .thumb:hover { opacity: 1; border: 2px solid #7B43A1; }
+
+
+.info-header h1 { font-size: 42px; color: #4B2C71; }
+.title-row { display: flex; justify-content: space-between; align-items: center; }
+
+.btn-fav-large {
+    background: #F3F0F7;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #ff4d4d;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.location-text { color: #888; margin-top: 5px; }
+
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+.stat-item {
+    background: #F8F6FC;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+}
+.stat-item span { display: block; font-size: 11px; color: #7B43A1; text-transform: uppercase; font-weight: 700; }
+.stat-item strong { font-size: 14px; color: #333; }
+
+
+.pet-description h3, .health-check h3 { font-size: 18px; color: #4B2C71; margin-bottom: 10px; }
+.pet-description p { color: #666; line-height: 1.6; margin-bottom: 25px; }
+
+.check-list { list-style: none; display: flex; gap: 20px; margin-bottom: 30px; }
+.check-list li { font-size: 14px; color: #27ae60; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+
+.owner-card {
+    background: #F3F0F7;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.owner-card img { width: 50px; height: 50px; border-radius: 50%; }
+.owner-info { flex: 1; }
+.owner-info strong { display: block; font-size: 14px; }
+.owner-info span { font-size: 12px; color: #888; }
+
+.btn-chat-now {
+    background: #7B43A1;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-chat-now:hover { background: #5a2d7a; transform: translateY(-2px); }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/html/inicio.html" style="cursor: pointer;"><img src="/assets/Logo.png" width="100px"
+                        alt="Logo"></a>
+            </div>
+
+            <nav>
+                <a href="feed.html" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+                <a href="inicio.html" class="nav-item search-bar-nav"><i class="fas fa-search"></i> Explorar Pets</a>
+                <a href="novo-post.html"><button class="btn-new-post"><i class="fas fa-plus"></i> Novo post</button></a>
+
+                <div class="menu-links">
+                    <a href="cadastrar-pet.html" class="menu-item">
+                        <i class="fas fa-paw"></i> Cadastrar Pet
+                    </a>
+
+                    <a href="meus-pets.html" class="menu-item flex-between">
+                        <span><i class="fas fa-dog"></i> Meus Pets</span>
+
+                    </a>
+
+                   <a href="favoritos.html" class="menu-item">
+                        <i class="fas fa-heart"></i> Favoritos
+                    </a>
+
+                   <a href="chats.html" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> Chats
+                    </a>
+
+                     <a href="explorar-ongs.html" class="menu-item">
+                        <i class="fas fa-file-alt"></i> Ongs Parceiras
+                    </a>
+
+                    <hr>
+
+                    <a href="perfil.html" class="menu-item flex-between">
+                        <span><i class="fas fa-user-circle"></i> Perfil</span>
+                        <span class="view-profile">Ver perfil</span>
+                    </a>
+
+                    <a href="configuracoes.html" class="menu-item">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </nav>
+
+            <div class="user-footer">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Caique</strong>
+                   <a href="perfil.html"> <span>Ver perfil</span> </a>
+                </div>
+                <a href="chats.html"><div class="chat-bubble"><i class="fas fa-comment"></i></div></a>
+            </div>
+
+        </aside>
+
+     <main class="content">
+    <div class="back-nav">
+        <a href="inicio.html"><i class="fas fa-arrow-left"></i> Voltar para a busca</a>
+    </div>
+
+    <section class="pet-details-container">
+        <div class="pet-gallery">
+            <div class="main-image">
+                <img src="https://placedog.net/600/600?id=10" alt="Rex" id="featured">
+                <span class="badge-new">Novo no Lar</span>
+            </div>
+            <div class="thumbnails">
+                <img src="https://placedog.net/600/600?id=10" class="thumb active">
+                <img src="https://placedog.net/600/600?id=11" class="thumb">
+                <img src="https://placedog.net/600/600?id=15" class="thumb">
+            </div>
+        </div>
+
+        <div class="pet-info-details">
+            <div class="info-header">
+                <div class="title-row">
+                    <h1>Rex</h1>
+                    <button class="btn-fav-large"><i class="far fa-heart"></i></button>
+                </div>
+                <p class="location-text"><i class="fas fa-map-marker-alt"></i> Hortolândia, São Paulo</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span>Idade</span>
+                    <strong>2 Anos</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Raça</span>
+                    <strong>Golden</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Sexo</span>
+                    <strong>Macho</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Porte</span>
+                    <strong>Grande</strong>
+                </div>
+            </div>
+
+            <div class="pet-description">
+                <h3>Sobre o Rex</h3>
+                <p>O Rex é um cão extremamente dócil e brincalhão. Ele foi resgatado em uma rodovia e agora procura um lar com espaço para correr. Ele se dá muito bem com outros cães e adora crianças.</p>
+            </div>
+
+            <div class="health-check">
+                <h3>Saúde e Cuidados</h3>
+                <ul class="check-list">
+                    <li><i class="fas fa-check-circle"></i> Vacinado</li>
+                    <li><i class="fas fa-check-circle"></i> Castrado</li>
+                    <li><i class="fas fa-check-circle"></i> Vermifugado</li>
+                </ul>
+            </div>
+
+            <div class="owner-card">
+                <img src="https://i.pravatar.cc/150?u=caique" alt="Dono">
+                <div class="owner-info">
+                    <strong>Caique Oliveira</strong>
+                    <span>Protetor Independente</span>
+                </div>
+               <a href="chats.html"> <button class="btn-chat-now">Chat agora</button> </a>
+            </div>
+        </div>
+    </section>
+</main>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+
+                menuItems.forEach(i => i.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+        function toggleFilter() {
+            const modal = document.getElementById('filterModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
